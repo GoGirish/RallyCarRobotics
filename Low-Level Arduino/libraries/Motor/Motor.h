@@ -11,10 +11,13 @@
 class Motor
 {
   public:
-    Motor (int _pin);
+    //Motor (int _pin);
+    void writeMicroseconds(int microseconds);
     void fullSpeedForward();
+    void setup(int pin);
     void fullSpeedBackward();
     void Brake();
+    void speed(int s);
   private:
     int _pin;
 };
