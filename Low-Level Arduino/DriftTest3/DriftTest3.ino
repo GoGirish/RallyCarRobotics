@@ -26,11 +26,12 @@ void loop()
   {
     drive.writeMicroseconds(1900);
     delay(1000);
-    steering.write(128);
-    drive.writeMicroseconds(1200);
     
+    drive.writeMicroseconds(1100);
+    steering.write(44);
 
-    delay(500);
+    
+    delay(1000);
     //steering.write(91);
     //
     //brakes the car
