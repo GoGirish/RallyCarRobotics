@@ -17,9 +17,12 @@ void setup()
 void loop() 
 {
   // put your main code here, to run repeatedly:
-  //motor.fullSpeedForward();
-  motor.speed(40);
-  //motor.writeMicroseconds(1700);
-  //s.writeMicroseconds(1800);
+//  motor.speed(30);
+//  delay(2000);
+//  motor.speed(-30);
+//  delay(2000);
+  motor.writeMicroseconds(1600);
+  delay(2000);
+  exit(0);
 }
 

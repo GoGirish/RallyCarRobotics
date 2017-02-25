@@ -58,8 +58,8 @@ void Motor::speed(int s)
   //takes the difference between brake and full power (2000 - 1500 = 500. Similarly, backwards full power is 1000. 1500 - 1000 = 500).
   //multiplies the difference by the percentage form of s (40 = 40%, -30 = -30%). Then adds this number to 1500.
   int x = (500*(s/100))+1500;
-  int a = s/100;
-  int b = 500*a;
+  double a = ((double)s)/100;
+  int b = (int)(500*a);
   int c = b + 1500;
   drive.writeMicroseconds(c);
 }
