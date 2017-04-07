@@ -22,24 +22,17 @@ void setup()
 void loop() 
 {
   // put your main code here, to run repeatedly:
-  while (i <2)
+  while (i < 2)
   {
     drive.writeMicroseconds(2000);
     delay(1000);
-    //steering.write(100);
-    //delay(100);
-    steering.write(30);
-    delay(10);
-    drive.writeMicroseconds(1100);
-    //steering.write(128);
-
-    
-    delay(1000);
-    //steering.write(91);
-    //
-    //brakes the car
+    drive.writeMicroseconds(1500);
+    delay(300);
+    drive.writeMicroseconds(1000);
+    delay(2000);
     
     i = 4;
   }
+  steering.write(86);
   drive.writeMicroseconds(1500);
 }

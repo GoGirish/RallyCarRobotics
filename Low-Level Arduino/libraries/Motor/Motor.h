@@ -7,6 +7,7 @@
 #define Motor_h
 
 #include "Arduino.h"
+#include "Servo.h"
 
 class Motor
 {
@@ -20,6 +21,8 @@ class Motor
     void speed(int s);
   private:
     int _pin;
+    Servo _drive;
+    int _pwm_in_ms;
 };
 
 #endif

@@ -1,7 +1,7 @@
 #include "Motor.h"
 #include <Servo.h>
 //Servo s;
-Motor motor;
+Motor drive_;
 void setup() 
 {
   // put your setup code here, to run once:
@@ -11,7 +11,7 @@ void setup()
   //  Serial.println("ENTER DUTY CYCLE IN MICROSECONDS");  
   //  Serial.println(); 
   //s.attach(9);
-  motor.setup(9);
+  drive_.setup(9);
 }
 
 void loop() 
@@ -21,7 +21,7 @@ void loop()
 //  delay(2000);
 //  motor.speed(-30);
 //  delay(2000);
-  motor.writeMicroseconds(1600);
+  drive_.writeMicroseconds(1600);
   delay(2000);
   exit(0);
 }

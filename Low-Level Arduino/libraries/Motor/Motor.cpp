@@ -2,46 +2,56 @@
 #include "Motor.h"
 #include "Servo.h"
 
-Servo drive;
-
 // Motor::Motor(int pin)
 // {
-//   drive.attach(pin);
-//   //drive.writeMicroseconds(1500);
-//   drive.writeMicroseconds(0);
+//   __drive.attach(pin);
+//   //_drive.writeMicroseconds(1500);
+//   _drive.writeMicroseconds(0);
 //   delay(1000);
-//   drive.writeMicroseconds(1500);
+//   _drive.writeMicroseconds(1500);
 //   delay(100);
 // }
 
 void Motor::setup(int pin)
 {
-  drive.attach(pin);
-  //drive.writeMicroseconds(1500);
-  drive.writeMicroseconds(0);
+  _drive.attach(pin);
+  _pin = pin;
+  //_drive.writeMicroseconds(1500);
+  _drive.writeMicroseconds(0);
   delay(1000);
-  drive.writeMicroseconds(1500);
+  _drive.writeMicroseconds(1500);
   delay(100);
+  _pwm_in_ms = 1500;
 }
 
 void Motor::fullSpeedForward()
 {
-  drive.writeMicroseconds(1700);
+  _drive.writeMicroseconds(2000);
+  _pwm_in_ms = 2000;
 }
 
 void Motor::fullSpeedBackward()
 {
-  drive.writeMicroseconds(1000);
+  _drive.writeMicroseconds(1000);
+  _pwm_in_ms = 1000;
 }
 
 void Motor::Brake()
 {
-  drive.writeMicroseconds(1500);
+  //NOTE THAT THIS BRAKE IS PURELY EXPERIMENTAL.
+
+  // _drive.writeMicroseconds(1500);
+  // _pwm_in_ms = 1500;
+  int brakeSpeed = 1500 - (_pwm_in_ms-1500);
+  writeMicroseconds(brakeSpeed);
+  delay(100);
+  writeMicroseconds(1500);
 }
 
 void Motor::writeMicroseconds(int microseconds)
 {
-  drive.writeMicroseconds(microseconds);
+  _drive.writeMicroseconds(microseconds);
+  _pwm_in_ms = microseconds;
 }
 
 //int s = the power of thrust. 100 is full power forward. 0 is full brake. -100 is full power backwards.
@@ -61,5 +71,6 @@ void Motor::speed(int s)
   double a = ((double)s)/100;
   int b = (int)(500*a);
   int c = b + 1500;
-  drive.writeMicroseconds(c);
+  _drive.writeMicroseconds(c);
+  _pwm_in_ms = c;
 }
